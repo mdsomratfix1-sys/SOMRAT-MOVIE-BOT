@@ -1,0 +1,19 @@
+services:
+  - type: worker
+    name: somrat-movie-bot
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    envVars:
+      - key: BOT_TOKEN
+        sync: false
+      - key: TMDB_API_KEY
+        sync: false
+      - key: ADMIN_IDS
+        sync: false
+      - key: DB_PATH
+        value: /var/data/somrat_movie_bot.db
+    disk:
+      name: somrat-movie-bot-data
+      mountPath: /var/data
+      sizeGB: 1
